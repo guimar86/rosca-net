@@ -28,7 +28,7 @@ namespace azure_starter.Controllers
 
         // GET: api/participants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Participant>> GetParticipant(int id)
+        public async Task<ActionResult<Participant>> GetParticipant(Guid id)
         {
             var participant = await _participantService.GetParticipantById(id);
 
@@ -65,7 +65,7 @@ namespace azure_starter.Controllers
 
         // DELETE: api/participants/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteParticipant(int id)
+        public async Task<IActionResult> DeleteParticipant(Guid id)
         {
             await _participantService.DeleteParticipant(id);
 

@@ -7,9 +7,9 @@ namespace azure_starter.model
     [Table("Participants")]
     public class Participant
     {
-        [Key]
-        public Guid Id;
-        
+        [Key] 
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "Please enter a name.")]
         public string Name { get; set; }
 

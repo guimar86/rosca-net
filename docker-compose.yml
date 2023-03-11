@@ -1,0 +1,35 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  app:
+    image: azurestarter
+    container_name: app
+    build:
+      context: .
+      dockerfile: azure-starter/Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./Migrations:/app/Migrations
+    networks:
+      - participants-net
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=database;Database=participantsDB;User=root;Password=Password123;"
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Password123
+      MYSQL_DATABASE: participantsDB
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - participants-net
+volumes:
+  db-data:
+
+networks:
+  participants-net:
