@@ -1,3 +1,4 @@
+using System;
 using azure_starter.services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,7 +45,7 @@ namespace azure_starter
 
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Rosca API");
+                options.SwaggerEndpoint(Environment.GetEnvironmentVariable("SWAGGER_FILE_URL"), "Rosca API");
             });
 
             app.UseHttpsRedirection();

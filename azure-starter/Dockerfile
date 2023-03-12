@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 5000
-
+ENV SWAGGER_FILE_URL http://localhost:5000/swagger/v1/swagger.json
 ENV ASPNETCORE_URLS=http://+:5000
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
